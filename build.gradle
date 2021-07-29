@@ -1,0 +1,76 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+buildscript {
+    ext.versions = [
+        'gradle': '4.1.3',
+        'kotlin': '1.4.32',
+        'appCompat': '1.2.0',
+        'coreKtx': '1.6.0',
+        'fragmentKtx': '1.3.4',
+        'material': '1.4.0',
+        'constraintLayout': '2.0.4',
+        'retrofit': '2.9.0',
+        'kotlinXCoroutines': '1.5.0',
+        'kotlinXCoroutinesTest': '1.4.1',
+        'mockitoKotlin': '3.2.0',
+        'archCoreTesting': '2.1.0',
+        'junit': '4.13.2',
+        'junitExt': '1.1.3',
+        'espressoCore': '3.4.0',
+        'hilt': '2.37'
+    ]
+    ext.deps = [
+        // Gradle Plugin Classpath
+        'gradleClasspath': "com.android.tools.build:gradle:${versions.gradle}",
+        'kotlinGradlePluginClasspath': "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
+        'hiltAndroidGradlePluginClasspath': "com.google.dagger:hilt-android-gradle-plugin:${versions.hilt}",
+
+        // Android Library
+        'kotlinStdlib': "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}",
+        'appCompat': "androidx.appcompat:appcompat:${versions.appCompat}",
+        'coreKtx': "androidx.core:core-ktx:${versions.coreKtx}",
+        'fragmentKtx': "androidx.fragment:fragment-ktx:${versions.fragmentKtx}",
+        'material': "com.google.android.material:material:${versions.material}",
+        'constraintLayout': "androidx.constraintlayout:constraintlayout:${versions.constraintLayout}",
+        'kotlinXCoroutinesCore': "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.kotlinXCoroutines}",
+        'kotlinXCoroutinesAndroid': "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.kotlinXCoroutines}",
+
+        // Networking
+        'okHttp': "com.squareup.okhttp3:okhttp:${versions.okHttp}",
+        'okHttpLogingInterceptor': "com.squareup.okhttp3:logging-interceptor:${versions.okHttp}",
+        'retrofit': "com.squareup.retrofit2:retrofit:${versions.retrofit}",
+        'retrofitConverterGson': "com.squareup.retrofit2:converter-gson:${versions.retrofit}",
+
+        // Testing
+        'mockitoKotlin': "org.mockito.kotlin:mockito-kotlin:${versions.mockitoKotlin}",
+        'kotlinXCoroutinesTest': "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.kotlinXCoroutinesTest}",
+        'archCoreTesting': "androidx.arch.core:core-testing:${versions.archCoreTesting}",
+        'junit': "junit:junit:${versions.junit}",
+        'junitExt': "androidx.test.ext:junit:${versions.junitExt}",
+        'espressoCore': "androidx.test.espresso:espresso-core:${versions.espressoCore}",
+
+        // Dependency Injection (Hilt)
+        'hilt': "com.google.dagger:hilt-android:${versions.hilt}",
+        'hiltCompiler': "com.google.dagger:hilt-compiler:${versions.hilt}"
+    ]
+
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath deps.gradleClasspath
+        classpath deps.kotlinGradlePluginClasspath
+        classpath deps.hiltAndroidGradlePluginClasspath
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

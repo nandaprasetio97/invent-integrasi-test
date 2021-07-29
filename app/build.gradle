@@ -1,0 +1,71 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.3"
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    defaultConfig {
+        applicationId "com.nandaprasetio.inventintegrasitest"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes.each {
+        it.buildConfigField "String", "API_URL", "\"https://invent-integrasi.com/brum_core/mobile/\""
+        it.buildConfigField "String", "API_AUTHORIZATION", "\"Bearer MEE4M3JPb2RpTExPdFVXRWtwVm5uVkl6S2lsUTF6MlFKRXVjQ3cvYnJxaExhS1hBam5mK2ZUMHNKVDQ1bFZBRzQ4N3k4YW51VEF3VFdLaUE5VG1vaWtJMFBUazdsZUc5djJsRGwrN3NQckZHNlI0VWxVS2VTeG1kcXVXYzVQcUZJOWgwaW81Vm5tcjN0MkJUellPbmRkZFpvcXdFODgvajhjM3BHNzZ4QWRidTVXb0NZUHM5blRvTEFFSDhqVnlYQ1RKb3pYRzhST3JhV251dW96M0Vzd2NtbVVDbkFvQjlCRy9KRGxCLzhPR3ZPT0svdjA0SzJyOCtKWXVvSzdRekRQN1pvM1gvODNpTndZM2VZOXkvdHZhRnJHS25pOHdOZExSVy9WNCswZUlWMlVBV1cwVlF3V0dzVS9oOHpSbjY=\""
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    // Android Library
+    implementation deps.kotlinStdlib
+    implementation deps.coreKtx
+    implementation deps.fragmentKtx
+    implementation deps.appCompat
+    implementation deps.material
+    implementation deps.constraintLayout
+    implementation deps.kotlinXCoroutinesCore
+    implementation deps.kotlinXCoroutinesAndroid
+
+    // Hilt
+    implementation deps.hilt
+    kapt deps.hiltCompiler
+
+    // Networking
+    implementation deps.retrofit
+    implementation deps.retrofitConverterGson
+
+    // Test
+    testImplementation deps.mockitoKotlin
+    testImplementation deps.kotlinXCoroutinesTest
+    testImplementation deps.junit
+    testImplementation deps.archCoreTesting
+    androidTestImplementation deps.junitExt
+    androidTestImplementation deps.espressoCore
+}
