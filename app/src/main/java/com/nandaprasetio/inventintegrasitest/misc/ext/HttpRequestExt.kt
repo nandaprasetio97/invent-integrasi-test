@@ -31,5 +31,6 @@ suspend fun<T> getHttpRequestBasicResult(
             }
         }
         is LoadDataResult.Error -> loadDataResult
+        else -> throw IllegalStateException("Invalid result.")
     }
 }

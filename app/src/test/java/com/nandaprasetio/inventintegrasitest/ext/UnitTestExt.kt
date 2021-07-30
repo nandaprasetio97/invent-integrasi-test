@@ -13,6 +13,7 @@ suspend fun<T> testRepositoryConnection(
     val isSuccessLoadDataResult = when (loadDataResult) {
         is LoadDataResult.Success -> true
         is LoadDataResult.Error -> { message = loadDataResult.e.toString(); false }
+        else -> throw IllegalStateException("Invalid Result")
     }
     Assert.assertTrue(message, isSuccessLoadDataResult)
 }
@@ -30,6 +31,7 @@ fun<T> hasBasicResultException(
                 }
             }
             is LoadDataResult.Success -> false
+            else -> throw IllegalStateException("Invalid Result")
         }
     }
 }

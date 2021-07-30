@@ -37,7 +37,7 @@ class NetworkModule {
     private fun provideOkHttp(): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(addInterceptor())
-            .sslSocketFactory(getSocketFactory(), getTrustManager())
+            //.sslSocketFactory(getSocketFactory(), getTrustManager())
             .build()
     }
 
@@ -65,6 +65,7 @@ class NetworkModule {
         return Interceptor {
             val request = it.request().newBuilder()
                 .addHeader("Authorization", BuildConfig.API_AUTHORIZATION)
+                .addHeader("Content-Type", "application/json")
                 .build()
             it.proceed(request)
         }

@@ -60,6 +60,7 @@ dependencies {
     // Networking
     implementation deps.retrofit
     implementation deps.retrofitConverterGson
+    implementation deps.retrofitConverterScalar
 
     // Test
     testImplementation deps.mockitoKotlin

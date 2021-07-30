@@ -14,7 +14,9 @@ import com.nandaprasetio.inventintegrasitest.domain.entity.GetCityRequestBody
 import com.nandaprasetio.inventintegrasitest.domain.entity.Region
 import com.nandaprasetio.inventintegrasitest.misc.LoadDataResult
 import com.nandaprasetio.inventintegrasitest.viewmodel.HomeViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class HomeActivity: BaseActivity<ActivityHomeBinding>() {
     private val homeViewModel: HomeViewModel by viewModels()
 
@@ -67,5 +69,9 @@ class HomeActivity: BaseActivity<ActivityHomeBinding>() {
 
     override fun setViewBinding(): ActivityHomeBinding {
         return ActivityHomeBinding.inflate(this.layoutInflater)
+    }
+
+    override fun setActivityConfiguration(): ActivityConfiguration {
+        return super.setActivityConfiguration().copy(enableBack = false, title = "Home")
     }
 }

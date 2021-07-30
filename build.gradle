@@ -39,6 +39,7 @@ buildscript {
         'okHttpLogingInterceptor': "com.squareup.okhttp3:logging-interceptor:${versions.okHttp}",
         'retrofit': "com.squareup.retrofit2:retrofit:${versions.retrofit}",
         'retrofitConverterGson': "com.squareup.retrofit2:converter-gson:${versions.retrofit}",
+        'retrofitConverterScalar': "com.squareup.retrofit2:converter-scalars:${versions.retrofit}",
 
         // Testing
         'mockitoKotlin': "org.mockito.kotlin:mockito-kotlin:${versions.mockitoKotlin}",
